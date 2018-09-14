@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/edel/Escritorio/Francisco/em-plugin-integration/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rGB/values-en-rGB.xml",
+            "outputFile": "/home/edel/em-plugin-integration/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rGB/values-en-rGB.xml",
             "map": [
                 {
                     "source": "/home/edel/.gradle/caches/transforms-1/files-1.1/play-services-basement-15.0.1.aar/42a78bea3ae084777bb70412694e19f4/res/values-en-rGB/values.xml",

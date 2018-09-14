@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/edel/Escritorio/Francisco/em-plugin-integration/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml",
+            "outputFile": "/home/edel/em-plugin-integration/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml",
             "map": [
                 {
                     "source": "/home/edel/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/ddbdf53227ff01f76517f0a25e558d64/res/values-v24/values-v24.xml",

@@ -21,8 +21,45 @@ var app = {
   initialize: function() {
     this.bindEvents();
   },
+  cont: 0
+  ,
+  result: {
+
+  }
+  ,
   browser: {
 
+  },
+  b64EncodeUnicode: function(str) {
+    // first we use encodeURIComponent to get percent-encoded UTF-8,
+    // then we convert the percent encodings into raw bytes which
+    // can be fed into btoa.
+    return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
+      function toSolidBytes(match, p1) {
+        return String.fromCharCode('0x' + p1);
+      }));
+  }
+  ,
+  query: function(dataType, startDate, endDate) {
+    navigator.health.query({
+      startDate: startDate,
+      endDate: endDate,
+      dataType: dataType,
+      limit: 1000
+    }, function(data) {
+      app.result[dataType] = data;
+      app.cont--;
+      if (app.cont == 0) {
+        alert(JSON.stringify(app.result));
+        var val = app.b64EncodeUnicode(JSON.stringify(app.result));
+        app.browser.executeScript({
+          code: "localStorage.setItem( 'data', '" + val + "' );"
+        });
+      }
+      // if calling canLaunch() with getAppList:true, data will contain an array named "appList" with the package names of 					applications that can handle the uri specified.
+    }, function(errMsg) {
+      alert("Error2! " + errMsg);
+    });
   },
   // Bind Event Listeners
   //
@@ -39,15 +76,18 @@ var app = {
   onDeviceReady: function() {
     app.browser = cordova.InAppBrowser.open('http://box2.stb.to:3000/', '_blank', 'location=no');
 
-    function b64EncodeUnicode(str) {
-      // first we use encodeURIComponent to get percent-encoded UTF-8,
-      // then we convert the percent encodings into raw bytes which
-      // can be fed into btoa.
-      return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
-        function toSolidBytes(match, p1) {
-          return String.fromCharCode('0x' + p1);
-        }));
-    }
+    var getParams = function(url) {
+      var params = {};
+      var parser = document.createElement('a');
+      parser.href = url;
+      var query = parser.search.substring(1);
+      var vars = query.split('&');
+      for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        params[pair[0]] = decodeURIComponent(pair[1]);
+      }
+      return params;
+    };
 
 
     var onLoadstart = function(event) {
@@ -69,7 +109,7 @@ var app = {
           navigator.camera.getPicture(function(imageData) {
             TesseractPlugin.recognizeText(imageData, "eng", function(recognizedText) {
               alert(recognizedText);
-              var val = b64EncodeUnicode(recognizedText);
+              var val = app.b64EncodeUnicode(recognizedText);
               app.browser.executeScript({
                 code: "localStorage.setItem( 'recognizedText', '" + val + "' );"
               });
@@ -93,30 +133,22 @@ var app = {
         }, function(errMsg) {
           alert("Error! " + errMsg);
         });
-      } else if (event.url.endsWith("/plugin3")) {
-        navigator.health.requestAuthorization([
-          'calories', 'distance', 'weight', 'height', 'steps' // Read and write permissions
-          //, {
-          //  read : ['steps'],       // Read only permission
-          //  write : ['height', 'weight']  // Write only permission
-          //}
-        ], function(data) {
-          navigator.health.query({
-            startDate: new Date(new Date().getTime() - 3 * 24 * 60 * 60 * 1000), // three days ago
-            endDate: new Date(), // now
-            dataType: 'weight',
-            limit: 1000
-          }, function(data) {
-            alert(JSON.stringify(data));
-            var val = b64EncodeUnicode(JSON.stringify(data));
-            app.browser.executeScript({
-              code: "localStorage.setItem( 'data', '" + val + "' );"
-            });
-            // if calling canLaunch() with getAppList:true, data will contain an array named "appList" with the package names of 					applications that can handle the uri specified.
-          }, function(errMsg) {
-            alert("Error2! " + errMsg);
-          });
+      } else if (event.url.includes("/plugin3")) {
 
+        var params = getParams(event.url);
+
+        navigator.health.requestAuthorization([
+          'steps', 'distance', 'appleExerciseTime', 'calories', 'calories.active', 'calories.basal', 'activity', 'height', 'weight', 'heart_rate', 'fat_percentage', 'blood_glucose', 'insulin', 'blood_pressure', 'gender', 'date_of_birth', 'nutrition', 'nutrition.calories', 'nutrition.fat.total', 'nutrition.fat.saturated', 'nutrition.fat.unsaturated', 'nutrition.fat.polyunsaturated', 'nutrition.fat.monounsaturated', 'nutrition.fat.trans', 'nutrition.cholesterol', 'nutrition.sodium', 'nutrition.potassium', 'nutrition.carbs.total', 'nutrition.dietary_fiber', 'nutrition.sugar', 'nutrition.protein', 'nutrition.vitamin_a', 'nutrition.vitamin_c', 'nutrition.calcium', 'nutrition.iron', 'nutrition.water', 'nutrition.caffeine'
+        ], function(data) {
+
+          var dataTypes = params["dataType"].split(',');
+
+          app.result = {};
+          app.cont = 0;
+          for (var i = 0; i < dataTypes.length; i++) {
+              app.cont++;
+              app.query(dataTypes[i].trim(), params["startDate"].toDate("mm/dd/yyyy hh:ii:ss"), params["endDate"].toDate("mm/dd/yyyy hh:ii:ss"));
+          }
           // if calling canLaunch() with getAppList:true, data will contain an array named "appList" with the package names of 					applications that can handle the uri specified.
         }, function(errMsg) {
           alert("Error1! " + errMsg);
@@ -126,5 +158,33 @@ var app = {
     app.browser.addEventListener('loadstart', onLoadstart);
   }
 };
+
+String.prototype.toDate = function(format)
+{
+  var normalized      = this.replace(/[^a-zA-Z0-9]/g, '-');
+  var normalizedFormat= format.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-');
+  var formatItems     = normalizedFormat.split('-');
+  var dateItems       = normalized.split('-');
+
+  var monthIndex  = formatItems.indexOf("mm");
+  var dayIndex    = formatItems.indexOf("dd");
+  var yearIndex   = formatItems.indexOf("yyyy");
+  var hourIndex     = formatItems.indexOf("hh");
+  var minutesIndex  = formatItems.indexOf("ii");
+  var secondsIndex  = formatItems.indexOf("ss");
+
+  var today = new Date();
+
+  var year  = yearIndex>-1  ? dateItems[yearIndex]    : today.getFullYear();
+  var month = monthIndex>-1 ? dateItems[monthIndex]-1 : today.getMonth()-1;
+  var day   = dayIndex>-1   ? dateItems[dayIndex]     : today.getDate();
+
+  var hour    = hourIndex>-1      ? dateItems[hourIndex]    : today.getHours();
+  var minute  = minutesIndex>-1   ? dateItems[minutesIndex] : today.getMinutes();
+  var second  = secondsIndex>-1   ? dateItems[secondsIndex] : today.getSeconds();
+
+  return new Date(year,month,day,hour,minute,second);
+};
+
 
 app.initialize();

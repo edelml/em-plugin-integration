@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/edel/Escritorio/Francisco/em-plugin-integration/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-am/values-am.xml",
+            "outputFile": "/home/edel/em-plugin-integration/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-am/values-am.xml",
             "map": [
                 {
                     "source": "/home/edel/.gradle/caches/transforms-1/files-1.1/play-services-base-15.0.1.aar/a691cea90c6551f7f9ec0a96e24d7c6d/res/values-am/values.xml",
