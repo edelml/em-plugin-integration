@@ -1,0 +1,105 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "https://github.com/gustavomazzoni/cordova-plugin-tesseract",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "https://github.com/gustavomazzoni/cordova-plugin-tesseract",
+        "spec": "git+https://github.com/gustavomazzoni/cordova-plugin-tesseract.git",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:gustavomazzoni/cordova-plugin-tesseract.git",
+          "sshUrl": "git+ssh://git@github.com/gustavomazzoni/cordova-plugin-tesseract.git",
+          "httpsUrl": "git+https://github.com/gustavomazzoni/cordova-plugin-tesseract.git",
+          "gitUrl": "git://github.com/gustavomazzoni/cordova-plugin-tesseract.git",
+          "shortcut": "github:gustavomazzoni/cordova-plugin-tesseract",
+          "directUrl": "https://raw.githubusercontent.com/gustavomazzoni/cordova-plugin-tesseract/master/package.json"
+        }
+      },
+      "/home/edel/Escritorio/Francisco/em-plugin-integration"
+    ]
+  ],
+  "_from": "git+https://github.com/gustavomazzoni/cordova-plugin-tesseract.git",
+  "_id": "cordova-plugin-tesseract@0.0.1",
+  "_inBundle": false,
+  "_inCache": true,
+  "_installable": true,
+  "_integrity": "",
+  "_location": "/cordova-plugin-tesseract",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "https://github.com/gustavomazzoni/cordova-plugin-tesseract",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "https://github.com/gustavomazzoni/cordova-plugin-tesseract",
+    "spec": "git+https://github.com/gustavomazzoni/cordova-plugin-tesseract.git",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:gustavomazzoni/cordova-plugin-tesseract.git",
+      "sshUrl": "git+ssh://git@github.com/gustavomazzoni/cordova-plugin-tesseract.git",
+      "httpsUrl": "git+https://github.com/gustavomazzoni/cordova-plugin-tesseract.git",
+      "gitUrl": "git://github.com/gustavomazzoni/cordova-plugin-tesseract.git",
+      "shortcut": "github:gustavomazzoni/cordova-plugin-tesseract",
+      "directUrl": "https://raw.githubusercontent.com/gustavomazzoni/cordova-plugin-tesseract/master/package.json"
+    }
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/gustavomazzoni/cordova-plugin-tesseract.git#e21e71115c8bb280cc4a6b6428b1137868fb373b",
+  "_shasum": "0670fadcee0cc8f5b58f7961faa07d03481380ff",
+  "_shrinkwrap": null,
+  "_spec": "https://github.com/gustavomazzoni/cordova-plugin-tesseract",
+  "_where": "/home/edel/Escritorio/Francisco/em-plugin-integration",
+  "author": {
+    "name": "gustavomazzoni"
+  },
+  "bugs": {
+    "url": "https://github.com/gustavomazzoni/cordova-plugin-tesseract#issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-tesseract",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "dependencies": {},
+  "deprecated": false,
+  "description": "\n\t\tThis plugin allows to recognise text from images\n\t",
+  "devDependencies": {},
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.6.0"
+    },
+    {
+      "name": "cordova-android",
+      "version": ">=3.6.0"
+    }
+  ],
+  "gitHead": "e21e71115c8bb280cc4a6b6428b1137868fb373b",
+  "homepage": "https://github.com/gustavomazzoni/cordova-plugin-tesseract#readme",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-tesseract",
+  "optionalDependencies": {},
+  "readme": "# Cordova Tesseract-OCR Plugin - For Android and iOS\n\nThis is a Cordova/Ionic plugin for OCR process using Tesseract library for both Android and iOS. [Tesseract](https://github.com/tesseract-ocr/tesseract) is an Open Source library for OCR (Optical Character Recognition) process.\n\nThis plugin defines a global `TesseractPlugin` object, which provides an API for recognizing text on images.\n```bash\n  TesseractPlugin.recognizeText(imageData, language, function(recognizedText) {\n    deferred.resolve(recognizedText);\n  }, function(reason) {\n    deferred.reject('Error on recognizing text from image. ' + reason);\n  });\n```\n\n## Installation\n\n### Before installing this plugin, make sure you have added the platform for your app:\n```bash\n$ ionic platform add android\n```\n-> substitute android with ios to build for iOS.\n\n-> substitute ionic with cordova to build on cordova.\n\n### 1. Download or clone this project, copy it to your app root folder and run ionic command to add the plugin:\n\n#### Ionic \n```bash\n$ git clone https://github.com/gustavomazzoni/cordova-plugin-tesseract\n$ cp -rf cordova-plugin-tesseract your-project/cordova-plugin-tesseract\n$ cd your-project/\n$ ionic plugin add cordova-plugin-tesseract\n```\n\n#### Cordova\n\n```bash\n$ cordova plugin add https://github.com/gustavomazzoni/cordova-plugin-tesseract\n```\n\n\n### 2. For Android platform:\n\n#### 2.5 Your project is ready to use this plugin on Android platform. Build your project:\n```bash\n$ ionic build android\n```\n\n### 3. For iOS platform:\n\n#### 3.1 Inside root directory of your ios platform, create Podfile and add [Tesseract OCR iOS](https://github.com/gali8/Tesseract-OCR-iOS) (Tesseract library for iOS7+) as a dependency:\n\n* Create `your-project/platforms/ios/Podfile`\n* Add 'TesseractOCRiOS' dependency (replace 'ocr-translation' with the name of your project):\n```bash\nsource 'https://github.com/CocoaPods/Specs.git'\nxcodeproj 'ocr-translation.xcodeproj/'\n\ntarget 'ocr-translation' do\n\n\tpod 'TesseractOCRiOS', '4.0.0'\n\nend\n```\n\n#### 3.2 Still at your ios platform folder, install the dependencies ([install the CocoaPods](https://cocoapods.org/) in case you don't have it yet) using the following commands:\n```bash\n$ pod install\n```\n\n#### 3.3 Your project is ready to use this plugin on iOS platform. Build your project:\n```bash\n$ ionic build ios\n```\n\nYour project is ready to use this plugin.\n\n## Usage\ncordova-plugin-tesseract is designed to recognize text in images in many languages, but for that to work we need to have the tessdata of the language you want the text to be recognized.\n\nTo use this plugin and recognize text in images, you need to:\n\n### 1. Download the language\nAs soon as you enter on your OCR use case, call `TesseractPlugin.loadLanguage` function to download the tessdata for your language.\n\nLanguage must be in format like `eng` . For a list of compatible languages check [this link](https://github.com/tesseract-ocr/tessdata/tree/3.04.00).\n\n```bash\nTesseractPlugin.loadLanguage(language, function(response) {\n  deferred.resolve(response);\n}, function(reason) {\n  deferred.reject('Error on loading OCR file for your language. ' + reason);\n});\n```\n\n### 2. Get image data from your photo\nLoad the image you want the text to be recognized from. On your angular Controller use [`$cordovaCamera`](http://ngcordova.com/docs/plugins/camera/) or [`cordova-plugin-camera`](https://github.com/apache/cordova-plugin-camera) plugin to take the photo or load an image:\n```bash\n$cordovaCamera.getPicture(options).then(function(imageData) {\n  $scope.image = \"data:image/jpeg;base64,\" + imageData;\n  $scope.text = null;\n\n  $timeout(function() {\n    // DOM has finished rendering\n    // insert here the call to TesseractPlugin.recognizeText function to recognize the text\n    \n  });\n}, function(err) {\n  // error\n  console.log('ERROR with camera plugin. Error: ' + err);\n});\n```\n\n### 3. Recognize text from image\nThen, after loaded the image, just call `TesseractPlugin.recognizeText` function with the image data, the language of the text in the image and a callback function to be called after the operation is done.\n```bash\nTesseractPlugin.recognizeText(imageData, language, function(recognizedText) {\n  $scope.text = recognizedText;\n}, function(reason) {\n  console.log('Error on recognizing text from image. ' + reason);\n});\n```\n\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gustavomazzoni/cordova-plugin-tesseract.git"
+  },
+  "version": "0.0.1"
+}

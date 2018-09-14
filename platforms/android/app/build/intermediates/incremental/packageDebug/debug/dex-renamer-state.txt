@@ -1,0 +1,4 @@
+#Fri Sep 14 09:19:06 EDT 2018
+base.0=/home/edel/Escritorio/Francisco/em-plugin-integration/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0
+renamed.0=classes.dex
+file.0=/home/edel/Escritorio/Francisco/em-plugin-integration/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0/classes.dex

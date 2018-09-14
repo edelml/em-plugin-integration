@@ -1,0 +1,106 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "cordova-plugin-health",
+        "scope": null,
+        "escapedName": "cordova-plugin-health",
+        "name": "cordova-plugin-health",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/home/edel/Escritorio/Francisco/em-plugin-integration"
+    ]
+  ],
+  "_from": "cordova-plugin-health@latest",
+  "_hasShrinkwrap": false,
+  "_id": "cordova-plugin-health@1.1.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/cordova-plugin-health",
+  "_nodeVersion": "8.11.1",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/cordova-plugin-health_1.1.0_1536324152856_0.3976846438614954"
+  },
+  "_npmUser": {
+    "name": "dariosalvi78",
+    "email": "dariosalvi78@gmail.com"
+  },
+  "_npmVersion": "6.4.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "cordova-plugin-health",
+    "scope": null,
+    "escapedName": "cordova-plugin-health",
+    "name": "cordova-plugin-health",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-health/-/cordova-plugin-health-1.1.0.tgz",
+  "_shasum": "64b968d1038251df63ab619673c28a2e8f9ca4c0",
+  "_shrinkwrap": null,
+  "_spec": "cordova-plugin-health",
+  "_where": "/home/edel/Escritorio/Francisco/em-plugin-integration",
+  "author": {
+    "name": "Dario Salvi"
+  },
+  "bugs": {
+    "url": "https://github.com/dariosalvi78/cordova-plugin-health/issues"
+  },
+  "cordova_name": "Health",
+  "dependencies": {},
+  "description": "A plugin that abstracts fitness and health repositories like Apple HealthKit or Google Fit",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-iFsNd1JUkDoepxI9RwUL8/rST7nWsS3Y9tH8v5QLipEpbLwvTZjYSz9mkRii2lbNgDKPnTqgV24n1f+J4lYMng==",
+    "shasum": "64b968d1038251df63ab619673c28a2e8f9ca4c0",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-health/-/cordova-plugin-health-1.1.0.tgz",
+    "fileCount": 17,
+    "unpackedSize": 292346,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbknI5CRA9TVsSAnZWagAA0ckP/jGSv1GLHl4qfltBvFGQ\n224Gcy7jnTtpN22Kdxdh5qAgah0+kWkNwOJ2CwPf809fQNsc+UWH4K6VtmBx\nRBCQvSO0S8udLa0tRHggAH1td+DJuegrkQRSjX/bOrf2dttGkoCGmkFOKEwN\nZ2gfQ3gfXfyZmAUPB3XznJwGbaTst+44QkBPAmU5d4fwVIGxawQGcUMEDJSN\nw3TcFzkQ/tu/a54J0db5nULvTH74S44iw6cxDrApisLrU+O9WpFwThtOncyo\n+O32hscoDs4oZtcm/2zrOvdDhQCiWkte5k4xKVdnas2/FRBwAC7RQi5LNgky\nfYUcyqPRVMbEzMDHhkXFQoaByG91PgC5uOlSI2uQFZgVJq7SkGgQOS7wsKY+\nYHKKLXX1eGOjhsIfgLDxmkiWr+EOb5Ed+kMKYgRzB++4MTVze8IkaHLJxLiv\nGXDak/eDNtKxRqEJLBgswASj7II2tPbB/2gOV4JHx6K02kteEH2NKNPyBghd\nfF4gTJAhLZP9lxm8nAuE7XRCQwswCuKTHTJ7selxRP/IPvideAFLSZDQrzw0\nFJ2c/4kFe4MYojSuPZpFn1ifLGKLJt89WkQBQj3pq2JBsAAbGYm+O1/QfIkj\npTW7IweA2UjySZGmrCFXzeSGpmM3wHRUbyRqyfX0JnSMssdWKaTIBcVWQh05\nYku5\r\n=CG+v\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=6.0.0"
+    }
+  ],
+  "gitHead": "0eb4e56fbdbcf560879464454753855a947eba8e",
+  "homepage": "https://github.com/dariosalvi78/cordova-plugin-health",
+  "issue": "https://github.com/dariosalvi78/cordova-plugin-health/issues",
+  "keywords": [
+    "HealthKit",
+    "Google Fit",
+    "health",
+    "fitness",
+    "ecosystem:cordova"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "dariosalvi78",
+      "email": "dariosalvi78@gmail.com"
+    }
+  ],
+  "name": "cordova-plugin-health",
+  "optionalDependencies": {},
+  "platforms": [
+    "ios",
+    "android"
+  ],
+  "readme": "ERROR: No README data found!",
+  "repo": "https://github.com/dariosalvi78/cordova-plugin-health.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dariosalvi78/cordova-plugin-health.git"
+  },
+  "version": "1.1.0"
+}
